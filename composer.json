@@ -1,0 +1,8 @@
+{
+  "name": "drupal/graphql-metatag",
+  "type": "drupal-module",
+  "description": "Exposes the Drupal Metatag data through GraphQL schema.",
+  "homepage": "https://github.com/AmazeeLabs/graphql-metatag",
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev"
+}
