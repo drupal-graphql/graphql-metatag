@@ -5,10 +5,11 @@ namespace Drupal\graphql_metatag\Plugin\GraphQL\Fields\Entity;
 use Drupal\Core\DependencyInjection\DependencySerializationTrait;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\graphql\GraphQL\Execution\ResolveContext;
 use Drupal\graphql\Plugin\GraphQL\Fields\FieldPluginBase;
 use Drupal\metatag\MetatagManagerInterface;
+use GraphQL\Type\Definition\ResolveInfo;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Youshido\GraphQL\Execution\ResolveInfo;
 
 /**
  * @GraphQLField(
@@ -64,7 +65,7 @@ class EntityMetatags extends FieldPluginBase implements ContainerFactoryPluginIn
   /**
    * {@inheritdoc}
    */
-  protected function resolveValues($value, array $args, ResolveInfo $info) {
+  protected function resolveValues($value, array $args, ResolveContext $context, ResolveInfo $info) {
     if ($value instanceof ContentEntityInterface) {
       $tags = $this->metatagManager->tagsFromEntityWithDefaults($value);
       $elements = $this->metatagManager->generateRawElements($tags, $value);

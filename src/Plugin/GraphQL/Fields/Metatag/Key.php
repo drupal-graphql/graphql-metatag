@@ -2,8 +2,9 @@
 
 namespace Drupal\graphql_metatag\Plugin\GraphQL\Fields\Metatag;
 
+use Drupal\graphql\GraphQL\Execution\ResolveContext;
 use Drupal\graphql\Plugin\GraphQL\Fields\FieldPluginBase;
-use Youshido\GraphQL\Execution\ResolveInfo;
+use GraphQL\Type\Definition\ResolveInfo;
 
 /**
  * @GraphQLField(
@@ -18,7 +19,7 @@ class Key extends FieldPluginBase {
   /**
    * {@inheritdoc}
    */
-  protected function resolveValues($value, array $args, ResolveInfo $info) {
+  protected function resolveValues($value, array $args, ResolveContext $context, ResolveInfo $info) {
     if (isset($value['#tag']) && $value['#tag'] === 'meta') {
       yield isset($value['#attributes']['property']) ? $value['#attributes']['property'] : $value['#attributes']['name'];
     }
