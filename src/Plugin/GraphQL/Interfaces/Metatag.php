@@ -7,7 +7,9 @@ use Drupal\graphql\Plugin\GraphQL\Interfaces\InterfacePluginBase;
 /**
  * @GraphQLInterface(
  *   id = "meta_tag",
- *   name = "Metatag"
+ *   name = "Metatag",
+ *   type = "metatag",
+ *   description = @Translation("Metatag interface containing metatag properties.")
  * )
  */
 class Metatag extends InterfacePluginBase {
